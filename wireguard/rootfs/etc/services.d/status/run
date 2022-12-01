@@ -3,8 +3,11 @@
 # Home Assistant Community Add-on: WireGuard
 # Shows current WireGuard status
 # ==============================================================================
-sleep 30
-bashio::log.info "Requesting current status from WireGuard..."
-while read line; do
-  bashio::log.info "${line}"
-done < <(wg show)
+if bashio::debug; then
+	sleep 30
+	bashio::log.debug "Requesting current status from WireGuard..."
+	while read line; do
+	  bashio::log.debug "${line}"
+	done < <(wg show)
+fi
+
